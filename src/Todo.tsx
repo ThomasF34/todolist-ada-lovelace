@@ -2,27 +2,14 @@ import React from 'react';
 
 interface TodoProps {
   name: string;
-}
-
-interface TodoState {
   done: boolean;
+  setTodoDone: () => void;
 }
 
-class Todo extends React.Component<TodoProps, TodoState> {
-  constructor(props: TodoProps){
-    super(props);
-    this.state = {
-      done: false,
-    }
-  }
-
-  componentDidMount(){
-    console.log("Le composant Todo est monté :) ");
-  }
-
+class Todo extends React.Component<TodoProps> {
   render(){
-    const buttonChange = <button onClick={(event) => this.setState({ done: true })}>Fait !</button>
-    if(this.state.done){
+    const buttonChange = <button onClick={(event) => this.props.setTodoDone()}>Fait !</button>
+    if(this.props.done){
       return <div>
           <li style={{textDecoration: "line-through"}}>{this.props.name}</li>
           {buttonChange}
