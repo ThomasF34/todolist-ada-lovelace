@@ -10,15 +10,15 @@ class Todo extends React.Component<TodoProps> {
   render(){
     const buttonChange = <button onClick={(event) => this.props.setTodoDone()}>Fait !</button>
     if(this.props.done){
-      return <div>
-          <li style={{textDecoration: "line-through"}}>{this.props.name}</li>
+      return <li>
+          <p style={{textDecoration: "line-through"}}>{this.props.name}</p>
           {buttonChange}
-        </div>
+        </li>
     } else {
-      return <div>
-          <li>{this.props.name}</li>
+      return <li>
+          <p>{this.props.name}</p>
           {buttonChange}
-        </div>
+        </li>
     }
   }
 }

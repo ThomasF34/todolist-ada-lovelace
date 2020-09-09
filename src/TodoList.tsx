@@ -19,13 +19,23 @@ class TodoList extends React.Component<{}, TodoListState>{
         {name: 'Faire la formation J8', done: false}
       ]
     }
+    this.clickButton2 = this.clickButton2.bind(this);
   }
+
+  clickButton = () => {
+    console.log("J'ai cliqué " + this.state.todos[0].name);
+  }
+
+  clickButton2(){
+    console.log("J'ai encore cliqué");
+  }
+
   render(){
     return <div>
       <h2>Je suis le titre de la Todo</h2>
       <ul>
         {this.state.todos.map((todo) => {
-        return <Todo name={todo.name} done={todo.done} setTodoDone={() => {
+        return <Todo key={todo.name} name={todo.name} done={todo.done} setTodoDone={() => {
           this.setState({
             todos: [
               ...this.state.todos.filter((todoInState) => todoInState !== todo),
@@ -35,6 +45,7 @@ class TodoList extends React.Component<{}, TodoListState>{
         }}/>
       })}
       </ul>
+      <button onClick={() => this.clickButton()}> Clic ici !</button>
     </div>
   }
 }
